@@ -1,5 +1,10 @@
 #include<iostream>
 using namespace std;
+// Output
+// ****
+// ****
+// ****
+// ****
 
 int main(){
 
