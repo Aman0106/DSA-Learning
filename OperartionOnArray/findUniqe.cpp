@@ -7,7 +7,6 @@ int findUnique(int ar[], int size){
     
     for(int i=0; i<size; i = i+2){
         if(ar[i] != ar[i+1]){
-            // cout<<"unique Element in array is: "<<ar[i]<<endl;
             return ar[i];
         }
     }
@@ -26,7 +25,7 @@ int betterUnique(int ar[], int size){
 }
 
 int main(){
-    int ar[] = {2,3,1,6,3,6,2};
+    int ar[] = {2,3,1,6,3,6,2,1,9};
     int size = sizeof(ar)/sizeof(ar[0]);
    
 
