@@ -9,12 +9,39 @@ vector<int> bruteForce(vector<int> v1, vector<int> v2){
     vector<int> ans;
     for(int i=0; i<v1.size(); i++){
         for(int j=k; j<v2.size(); j++){
+            if(v2[j]>v1[i]){
+                break;
+            }
             if(v1[i] == v2[j]){
                 k = j+1;
                 ans.push_back(v2[j]);
                 break;
             }
         }
+    }
+
+    return ans;
+}
+
+vector<int> optimization1(vector<int> v1, vector<int> v2){
+    
+    vector<int> ans;
+
+    int i=0, j=0;
+
+    while(i<v1.size()){
+        if(v1[i] == v2[j]){
+            ans.push_back(v2[j]);
+            i++;
+            j++;
+            continue;
+        }
+        if(v1[i]<v2[j]){
+            i++;
+            j=0;
+            continue;
+        }
+        j++;
     }
 
     return ans;
@@ -33,10 +60,10 @@ void print(vector<int> v){
 
 int main(){
 
-    vector<int> v1 = {3,3,4,5,6,8,8};
+    vector<int> v1 = {2,6,9};
 
-    vector<int> v2 = {4,6,5,8};
+    vector<int> v2 = {0,2};
 
-    print(bruteForce(v1, v2));
+    print(optimization1(v1, v2));
     return 0;
 }
