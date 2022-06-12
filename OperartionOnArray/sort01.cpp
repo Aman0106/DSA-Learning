@@ -12,10 +12,10 @@ vector<int> sort01(vector<int> v){
         if(v[lb] == 1 && v[ub] == 0){
             swap(v[ub--], v[lb++]);
         }
-        else if(v[lb] == 0){
+        if(v[lb] == 0){
             lb++;
         }
-        else if(v[ub] == 1){
+        if(v[ub] == 1){
             ub--;
         }
 
@@ -32,7 +32,7 @@ void print(vector<int> ans){
 }
 
 int main(){
-    vector<int> v = {0,1,1,1,0,1,1,1,0,1};
+    vector<int> v = {0,0,1,0,1,1,0,1};
 
     // sort01(v);
 
