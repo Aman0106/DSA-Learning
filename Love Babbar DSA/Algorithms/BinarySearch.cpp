@@ -7,7 +7,6 @@ int binarySearch(int value, int* a, int size){
     int l = 0, u = size-1;
 
     while(l<=u){
-        // cout<<a[1mid]<<" ";
 
         if(a[mid] == value){
             return mid;
@@ -30,6 +29,5 @@ int main(){
     int a[] = {2,4,8,11,13,33,44,62};
     int size = sizeof(a)/sizeof(a[0]);
     cout<<binarySearch(8, a, size)<<endl;
-    // cout<<5/2<<endl;
     return 0;
 }
