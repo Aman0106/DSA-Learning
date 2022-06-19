@@ -20,9 +20,9 @@ void helper(vector<vector<int>> &maze, vector<vector<int>>& visited , string ins
         ans.push_back(instruction);
         return;
     }
-    cout<<"\n\n";
+    // cout<<"\n\n";
     visited[pos.first][pos.second] = 1;
-    printS(visited);
+    // printS(visited);
     if (pos.first!=maze.size()-1 && maze[pos.first + 1][pos.second] == 1 && visited[pos.first + 1][pos.second] != 1){
         pos.first++; 
         helper(maze, visited, instruction+"D", pos);
@@ -60,7 +60,7 @@ void print(){
 int main(){
     vector<vector<int>> maze = { {1, 1, 1},
                                  {1, 1, 1},
-                                 {1, 1, 1} };
+                                 {1, 0, 1} };
     vector<vector<int>> visited(maze.size(), vector<int>(maze.size(),0));
 
     pair<int,int> pos(0,0);
