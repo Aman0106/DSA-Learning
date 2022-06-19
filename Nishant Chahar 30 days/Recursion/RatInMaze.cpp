@@ -5,65 +5,68 @@ using namespace std;
 
 vector<string> ans;
 
+void printS(vector<vector<int>> v){
+    for(int i=0; i<v.size(); i++){
+        for(int j=0; j<v.size(); j++){
+            cout<<v[i][j]<<" ";
+        }
+
+        cout<<endl;
+    }
+}
 void helper(vector<vector<int>> &maze, vector<vector<int>>& visited , string instruction, pair<int, int> pos)
-{
-    cout<<instruction<<endl;
-    if(pos.first == maze.size() && pos.second == maze.size()){
+{   
+    if(pos.first == maze.size()-1 && pos.second == maze.size()-1){
         ans.push_back(instruction);
         return;
     }
-
-    if (maze[pos.first + 1][pos.second] == 1 && visited[pos.first + 1][pos.second] != 1)
-    {
-        visited[pos.first + 1][pos.second] = 1;
+    cout<<"\n\n";
+    visited[pos.first][pos.second] = 1;
+    printS(visited);
+    if (pos.first!=maze.size()-1 && maze[pos.first + 1][pos.second] == 1 && visited[pos.first + 1][pos.second] != 1){
         pos.first++; 
         helper(maze, visited, instruction+"D", pos);
-        visited[pos.first + 1][pos.second] = 0;
         pos.first--; 
+        visited[pos.first + 1][pos.second] = 0;
     }
-    if (pos.second!=0 && maze[pos.first][pos.second-1] == 1 && visited[pos.first][pos.second-1] != 1)
-    {
-        visited[pos.first][pos.second-1] = 1;
+    if (pos.second!=0 && maze[pos.first][pos.second-1] == 1 && visited[pos.first][pos.second-1] != 1){
         pos.second--; 
         helper(maze, visited, instruction+"L", pos);
-        visited[pos.first][pos.second-1] = 0;
         pos.second++; 
+        visited[pos.first][pos.second-1] = 0;
     }
-    if (maze[pos.first][pos.second+1] == 1 && visited[pos.first][pos.second+1] != 1)
-    {
-        visited[pos.first][pos.second+1] = 1;
+    if (pos.second!=maze.size()-1 && maze[pos.first][pos.second+1] == 1 && visited[pos.first][pos.second+1] != 1){
         pos.second++; 
         helper(maze, visited, instruction+"R", pos);
-        visited[pos.first][pos.second+1] = 0;
         pos.second--; 
+        visited[pos.first][pos.second+1] = 0;
     }
-    if (pos.first!=0 && maze[pos.first-1][pos.second] == 1 && visited[pos.first-1][pos.second] != 1)
-    {
-        visited[pos.first-1][pos.second] = 1;
+    if (pos.first!=0 && maze[pos.first-1][pos.second] == 1 && visited[pos.first-1][pos.second] != 1){
         pos.first--; 
         helper(maze, visited, instruction+"U", pos);
-        visited[pos.first-1][pos.second] = 0;
         pos.first++; 
+        visited[pos.first-1][pos.second] = 0;
     }
 }
 
 void print(){
-    cout<<"\n\npoi poi\n\n";
     for(int i=0; i<ans.size(); i++){
         cout<<ans[i]<<endl;
     }
 }
 
+
+
 int main(){
-    vector<vector<int>> maze = { {1, 0, 0, 0},
-                                 {1, 1, 0, 1},
-                                 {1, 1, 0, 0},
-                                 {0, 1, 1, 1} };
+    vector<vector<int>> maze = { {1, 1, 1},
+                                 {1, 1, 1},
+                                 {1, 1, 1} };
     vector<vector<int>> visited(maze.size(), vector<int>(maze.size(),0));
 
     pair<int,int> pos(0,0);
+
     helper(maze, visited, "", pos);
-    // cout<<maze.size();
-    // cout<<"poi poi poi \n";
+    if(maze[0][0] == 0 || maze[maze.size()-1][maze.size()-1] == 0 || ans.size() == 0)
+        ans.push_back("-1");
     print();
 }
