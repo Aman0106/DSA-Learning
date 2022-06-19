@@ -29,5 +29,6 @@ int main(){
     int a[] = {2,4,8,11,13,33,44,62};
     int size = sizeof(a)/sizeof(a[0]);
     cout<<binarySearch(8, a, size)<<endl;
+
     return 0;
 }
