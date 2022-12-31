@@ -17,8 +17,14 @@ int gcdIteratively(int a, int b){
     return a;
 }
 
+int lcm(int gcd, int a, int b){
+    return (a*b)/gcd;
+}
+
 int main(){
-    int a=100, b = 2001;
-    cout<<"GCD of "<<a<<" and "<<b<<" = "<<gcdIteratively(a,b);
+    int a=100, b = 200;
+    int gcd = gcdIteratively(a,b);
+    cout<<"\nGCD of "<<a<<" and "<<b<<" = "<<gcd;
+    cout<<"\nLCM of "<<a<<" and "<<b<<" = "<<lcm(gcd, a, b);
     return 0;
 }
